@@ -1,4 +1,5 @@
 # 🧬 PDB Batch Structural Aligner
+using tmtools
 
 This Python tool allows you to **automatically align and compare multiple PDB structures** within subfolders using **TM-align** and **Bio.PDB**. It performs all-vs-all pairwise superpositions of proteins that share the same prefix (e.g., `e6`, `e7`) within each subfolder and saves the results in a clean, structured format.
 
@@ -31,12 +32,12 @@ This Python tool allows you to **automatically align and compare multiple PDB st
    ```bash
    python auto_align.py
    ```
-4. When prompted
-- Drag and drop the base folder containing subfolders of .pdb files.
-- Each subfolder should contain .pdb files named like e6_xyz.pdb, e6_abc.pdb, etc.
+4. When prompted:
+   - Drag and drop the base folder containing subfolders of `.pdb` files.
+   - Each subfolder should contain `.pdb` files named like `e6_xyz.pdb`, `e7_abc.pdb`, etc.
 
-Example:
-```bash
+**Example folder structure:**
+```plaintext
 input_folder/
 ├── 58/
 │   ├── e6_A.pdb
@@ -47,8 +48,9 @@ input_folder/
 │   ├── e6_C.pdb
 │   └── e6_D.pdb
 ```
-Output: 
-```bash
+
+**Output structure:**
+```plaintext
 auto-align-date/
 ├── 58/
 │   ├── e6_A_vs_e6_B/
@@ -64,18 +66,31 @@ auto-align-date/
 │       └── ...
 ```
 
-📊 Outputs
-Each comparison folder contains:
-`superposed_structure.pdb` — Aligned structure
-`alignment_results.txt` — TM-score, RMSD, rotation/translation, and residue comparison
-`view_superposition.rms` — Basic RasMol script
-Original input `.pdb` files
+---
 
-🧪 Requirements
+## 📊 Outputs
+
+Each comparison folder contains:
+- `superposed_structure.pdb` — The aligned structure
+- `alignment_results.txt` — TM-score, RMSD, rotation/translation matrices, and residue comparison
+- `view_superposition.rms` — RasMol visualization script
+- Original input `.pdb` files
+
+---
+
+## 🧪 Requirements
+
 - [Python 3.7+](https://www.python.org/downloads/release/python-370/)
 - [tmtools](https://github.com/jvkersch/tmtools) (for TM-align bindings)
 - [biopython](https://biopython.org/) (for structure handling)
 
+---
 
-- Only compares chains from the first model and first chain in each structure.
-- Automatically skips comparisons where CA atoms don't match.
+## ⚠️ Important Notes
+
+- The script compares only chains from the first model and first chain in each structure.
+- It automatically skips comparisons where CA atoms do not match between structures.
+- Make sure your input `.pdb` files are named consistently with prefixes like `e6`, `e7`, etc., to ensure proper grouping.
+
+
+**Disclaimer:** This README was generated with the assistance of AI.
