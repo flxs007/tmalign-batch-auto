@@ -22,7 +22,7 @@ This Python tool allows you to **automatically align and compare multiple PDB st
 1. Clone this repo or copy the script into your project:
    ```bash
    git clone https://github.com/flxs007/tmalign-batch-auto.git
-   cd pdb-batch-align
+   cd tmalign-batch-auto
    ```
 2. Install required dependencies:
    ```bash
